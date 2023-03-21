@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="page-header justify-content-center min-vh-100"
-        style="background-image: url('https://img.freepik.com/free-photo/cloud-computing-banner-background-smart-city_53876-108504.jpg?w=740&t=st=1679378996~exp=1679379596~hmac=8e0d8fd7bff9687b6cba4f90861e05d95132922b5cb5f14cd57b6ccb4dbf09b2');">
+        style="background-image: url('https://images.unsplash.com/photo-1497294815431-9365093b7331?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80');">
         <span class="mask bg-gradient-dark opacity-6"></span>
         <div class="container">
             <h1 class="text-light text-center">Welcome to Material Dashboard FREE Laravel Live Preview.</h1>
