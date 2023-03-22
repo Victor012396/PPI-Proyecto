@@ -14,7 +14,8 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        //
+        $device = device::all();
+        return view('device.index',compact('device'));
     }
 
     /**
@@ -24,7 +25,7 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        //
+        return view('device.create');
     }
 
     /**
@@ -35,7 +36,13 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'lugar'->['required'],
+            'espacio'->['required'],
+            'device'->['required'],
+        ]);
+        device::create($request->all());
+        return redirect()->route('device.index')
     }
 
     /**
@@ -46,7 +53,7 @@ class DeviceController extends Controller
      */
     public function show(device $device)
     {
-        //
+        // No se usa
     }
 
     /**
@@ -57,7 +64,7 @@ class DeviceController extends Controller
      */
     public function edit(device $device)
     {
-        //
+        return view('device.edit',compact('device'));
     }
 
     /**
@@ -69,7 +76,13 @@ class DeviceController extends Controller
      */
     public function update(Request $request, device $device)
     {
-        //
+        $request->validate([
+            'lugar'->['required'],
+            'espacio'->['required'],
+            'device'->['required'],
+        ]);
+        $device->update($request->all());
+        return redirect()->route('device.index')
     }
 
     /**
@@ -80,6 +93,8 @@ class DeviceController extends Controller
      */
     public function destroy(device $device)
     {
-        //
+        $device->delete();
+        return redirect()->route('device.index')
+
     }
 }

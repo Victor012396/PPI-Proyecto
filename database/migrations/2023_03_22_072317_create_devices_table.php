@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('devices', function (Blueprint $table) {
             $table->id();
-            $table->string();
+            $table->string('lugar');
+            $table->string('espacio');
+            $table->string('device');
             $table->timestamps();
 
         });

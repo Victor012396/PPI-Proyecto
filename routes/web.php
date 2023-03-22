@@ -77,3 +77,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.laravel-examples.user-profile');
 	})->name('user-profile');
 });
+
+Route::group(['middleware' => 'auth'], function(){
+	Route::resource('device','App\Http\Controllers\DeviceController', ['except'=>['show']]);
+});
