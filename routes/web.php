@@ -70,6 +70,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('user-management', function () {
 		return view('pages.laravel-examples.user-management');
 	})->name('user-management');
+	Route::get('iot-management', function () {
+		return view('pages.laravel-examples.iot-management');
+	})->name('iot-management');
 	Route::get('user-profile', function () {
 		return view('pages.laravel-examples.user-profile');
 	})->name('user-profile');

@@ -17,7 +17,7 @@
             <div class="col-12 col-md-6">
                 <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                     <li class="nav-item">
-                        Proyecto libre
+                        <a class="nav-link text-white" target="_blank">Proyecto libre</a>
                     </li>
                     <li class="nav-item">
                         <a href="https://www.emqx.io/" class="nav-link text-white" target="_blank">EMQX</a>
