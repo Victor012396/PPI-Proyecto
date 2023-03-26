@@ -37,12 +37,12 @@ class DeviceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'lugar'->['required'],
-            'espacio'->['required'],
-            'device'->['required'],
+            'lugar'=>['required'],
+            'espacio'=>['required'],
+            'device'=>['required'],
         ]);
         device::create($request->all());
-        return redirect()->route('device.index')
+        return redirect()->route('device.index');
     }
 
     /**
@@ -77,12 +77,12 @@ class DeviceController extends Controller
     public function update(Request $request, device $device)
     {
         $request->validate([
-            'lugar'->['required'],
-            'espacio'->['required'],
-            'device'->['required'],
+            'lugar'=>['required'],
+            'espacio'=>['required'],
+            'device'=>['required'],
         ]);
         $device->update($request->all());
-        return redirect()->route('device.index')
+        return redirect()->route('device.index');
     }
 
     /**
@@ -94,7 +94,7 @@ class DeviceController extends Controller
     public function destroy(device $device)
     {
         $device->delete();
-        return redirect()->route('device.index')
+        return redirect()->route('device.index');
 
     }
 }
