@@ -55,7 +55,7 @@
                                             <td>{{$device->espacio}}</td>
                                             <td>
                                                 <form action="{{route('device.destroy',$device->id)}}" method="POST">
-                                                    <a href="{{route('device.edit',$device->id)}}" class="btn btn-warning">Editar</a>
+                                                    <a href="{{route('device.edit',$device->id)}}" class="btn btn-primary">Editar</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger" type="submit">Borrar</button>

@@ -7,7 +7,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
         <a class="navbar-brand m-0 d-flex text-wrap align-items-center" href=" {{ route('dashboard') }} ">
-            <img src="iot.png" class="navbar-brand-img h-100" alt="main_logo">
+            <img src="https://cdn-icons-png.flaticon.com/512/3355/3355766.png" class="navbar-brand-img h-100" alt="main_logo">
             <span class="ms-2 font-weight-bold text-white">Proyecto IOT</span>
         </a>
     </div>
@@ -30,7 +30,7 @@
                 <a class="nav-link text-white {{ $activePage == 'device-management' ? ' active bg-gradient-primary' : '' }} "
                     href="{{ route('device.index') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center"></i>
+                    <i class="material-icons opacity-10">devices</i>
                     </div>
                     <span class="nav-link-text ms-1">Gestión de dispositivos</span>
                 </a>
@@ -41,11 +41,11 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center"></i>
                     </div>
-                    <span class="nav-link-text ms-1">User Management</span>
+                    <span class="nav-link-text ms-1">Gestión de usuarios</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Pages</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Páginas</h6>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'dashboard' ? ' active bg-gradient-primary' : '' }} "
@@ -60,18 +60,18 @@
                 <a class="nav-link text-white {{ $activePage == 'tables' ? ' active bg-gradient-primary' : '' }} "
                     href="{{ route('tables') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">table_view</i>
+                        <i class="material-icons opacity-10">download</i>
                     </div>
-                    <span class="nav-link-text ms-1">Tables</span>
+                    <span class="nav-link-text ms-1">Importar datos</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'billing' ? ' active bg-gradient-primary' : '' }}  "
                     href="{{ route('billing') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">receipt_long</i>
+                        <i class="material-icons opacity-10">mail</i>
                     </div>
-                    <span class="nav-link-text ms-1">Billing</span>
+                    <span class="nav-link-text ms-1">Enviar mensaje</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -80,11 +80,11 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">notifications</i>
                     </div>
-                    <span class="nav-link-text ms-1">Notifications</span>
+                    <span class="nav-link-text ms-1">Notificaciones</span>
                 </a>
             </li>
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Páginas de cuenta</h6>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white {{ $activePage == 'profile' ? ' active bg-gradient-primary' : '' }}  "
@@ -92,7 +92,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">person</i>
                     </div>
-                    <span class="nav-link-text ms-1">Profile</span>
+                    <span class="nav-link-text ms-1">Perfíl</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -100,7 +100,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">login</i>
                     </div>
-                    <span class="nav-link-text ms-1">Sign In</span>
+                    <span class="nav-link-text ms-1">Inicio de sesión</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -108,7 +108,7 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">assignment</i>
                     </div>
-                    <span class="nav-link-text ms-1">Sign Up</span>
+                    <span class="nav-link-text ms-1">Registro</span>
                 </a>
             </li>
         </ul>
