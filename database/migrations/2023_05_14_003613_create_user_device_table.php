@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('devices', function (Blueprint $table) {
-            $table->id();
-            $table->string('lugar');
-            $table->string('espacio');
-            $table->string('device');
-            $table->foreignId('productos_id')
-            $table->timestamps();
-
+        Schema::create('user_device', function (Blueprint $table) {
+            //$table->id();
+            //$table->timestamps();
+            $table->foreignId('user_id')->constrained()->OnDelete('cascade');
+            $table->foreignId('device_id')->constrained();
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devices');
+        Schema::dropIfExists('user_device');
     }
 };

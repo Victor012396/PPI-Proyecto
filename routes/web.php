@@ -74,10 +74,12 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.laravel-examples.iot-management');
 	})->name('iot-management');
 	Route::get('user-profile', function () {
-		return view('pages.laravel-examples.user-profile');
+		return view('user.profile');
 	})->name('user-profile');
 });
-
+Route::get('/generar-pdf', 'generarPDF');
 Route::group(['middleware' => 'auth'], function(){
 	Route::resource('device','App\Http\Controllers\DeviceController', ['except'=>['show']]);
+	Route::resource('producto','App\Http\Controllers\ProductoController', ['except'=>['show']]);
+	Route::resource('user','App\Http\Controllers\UserController', ['except'=>['show']]);
 });

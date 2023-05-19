@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\device;
+use App\Models\producto;
 use Illuminate\Http\Request;
 
-class DeviceController extends Controller
+class ProductoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,11 @@ class DeviceController extends Controller
         $this->middleware('auth')->except('show');
 
     }
-
-    public function index()
+    
+     public function index()
     {
-        $device = device::all();
-        return view('device.index',compact('device'));
+        $producto = producto::all();
+        return view('producto.index',compact('producto'));
     }
 
     /**
@@ -31,7 +31,7 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        return view('device.create');
+        return view('producto.create');
     }
 
     /**
@@ -43,64 +43,65 @@ class DeviceController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'lugar'=>['required'],
-            'espacio'=>['required'],
-            'device'=>['required'],
+            'marca'=>['required'],
+            'tipo'=>['required'],
+            'nombre'=>['required'],
+            'costo'=>['required'],
         ]);
-        device::create($request->all());
-        return redirect()->route('device.index');
+        producto::create($request->all());
+        return redirect()->route('producto.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\device  $device
+     * @param  \App\Models\producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function show(device $device)
+    public function show(producto $producto)
     {
-        // No se usa
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\device  $device
+     * @param  \App\Models\producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function edit(device $device)
+    public function edit(producto $producto)
     {
-        return view('device.edit',compact('device'));
+        return view('producto.edit',compact('producto'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\device  $device
+     * @param  \App\Models\producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, device $device)
+    public function update(Request $request, producto $producto)
     {
         $request->validate([
-            'lugar'=>['required'],
-            'espacio'=>['required'],
-            'device'=>['required'],
+            'marca'=>['required'],
+            'tipo'=>['required'],
+            'nombre'=>['required'],
+            'costo'=>['required'],
         ]);
-        $device->update($request->all());
-        return redirect()->route('device.index');
+        $producto->update($request->all());
+        return redirect()->route('producto.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\device  $device
+     * @param  \App\Models\producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(device $device)
+    public function destroy(producto $producto)
     {
         $device->delete();
-        return redirect()->route('device.index');
-
+        return redirect()->route('producto.index');
     }
 }
