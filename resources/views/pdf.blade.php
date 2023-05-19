@@ -1,21 +1,19 @@
-<?php 
-use Dompdf\Dompdf;
-use Illuminate\Support\Facades\View;
-
-public function generarPDF()
-{
-    // Crear una instancia de Dompdf
-    $dompdf = new Dompdf();
-
-    // Renderizar la vista HTML en una cadena
-    $html = View::make('pdf')->render();
-
-    // Cargar el contenido HTML en Dompdf
-    $dompdf->loadHtml(('<h1>Hola mundo</h1><br><a href="https://parzibyte.me/blog">By Parzibyte</a>'););
-
-    // Renderizar el PDF
-    $dompdf->render();
-
-    // Generar la respuesta con el contenido PDF
-    return $dompdf->stream('documento.pdf');
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ejemplo de PDF</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Proyecto IoT</h1>
+    <p>Bienvenido a este novedoso Proyecto.</p>
+</body>
+</html>

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tipo');
             $table->string('nombre');
             $table->float('costo');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

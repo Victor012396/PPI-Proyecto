@@ -20,5 +20,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@material.com',
             'password' => ('secret')
         ]);
+        $this->call(ProductoSeeder::class);
+        $this->call(DeviceSeeder::class);
     }
 }

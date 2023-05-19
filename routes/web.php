@@ -29,6 +29,7 @@ use App\Http\Controllers\SessionsController;
 
 Route::get('/', function () {return redirect('sign-in');})->middleware('guest');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/generar-pdf', [DashboardController::class, 'generarPDF'])->middleware('auth');
 Route::get('sign-up', [RegisterController::class, 'create'])->middleware('guest')->name('register');
 Route::post('sign-up', [RegisterController::class, 'store'])->middleware('guest');
 Route::get('sign-in', [SessionsController::class, 'create'])->middleware('guest')->name('login');
@@ -77,7 +78,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('user.profile');
 	})->name('user-profile');
 });
-Route::get('/generar-pdf', 'generarPDF');
+
 Route::group(['middleware' => 'auth'], function(){
 	Route::resource('device','App\Http\Controllers\DeviceController', ['except'=>['show']]);
 	Route::resource('producto','App\Http\Controllers\ProductoController', ['except'=>['show']]);
