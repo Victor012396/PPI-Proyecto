@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 use App\Models\User;
+use App\Mail\WelcomeEmail;
 
 class RegisterController extends Controller
 {
@@ -21,8 +24,8 @@ class RegisterController extends Controller
         ]);
 
         $user = User::create($attributes);
+        Mail::to($user->email)->send(new WelcomeEmail($user));
         auth()->login($user);
-        
         return redirect('/dashboard');
     } 
 }

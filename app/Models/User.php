@@ -18,6 +18,9 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+    public function device(){
+        return $this->belongsToMany(Device::class,'user_device');
+    }
     protected $fillable = [
         'name',
         'email',

@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class device extends Model
 {
     use HasFactory;
+    public function user(){
+        return $this->belongsToMany(User::class,'user_device');
+    }
     protected $fillable = ['lugar','espacio','device'];
 }
