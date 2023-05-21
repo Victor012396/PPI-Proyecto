@@ -30,13 +30,7 @@ class WelcomeEmail extends Mailable
      */
     public function envelope()
     {
-        return new Envelope(
-            from: new Address('victor.velasco01@gmail.com','Victor Velasco'),
-            replyTo: [
-                new Address($user->email,$user->name ),
-            ],
-            subject: 'Welcome To Project IoT',
-        );
+
     }
 
     /**

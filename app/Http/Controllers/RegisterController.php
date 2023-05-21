@@ -24,8 +24,8 @@ class RegisterController extends Controller
         ]);
 
         $user = User::create($attributes);
-        Mail::to($user->email)->send(new WelcomeEmail($user));
-        auth()->login($user);
+        //auth()->login($user);
+        $user->sendEmailVerificationNotification();
         return redirect('/dashboard');
     } 
 }
