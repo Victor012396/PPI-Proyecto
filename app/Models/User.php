@@ -19,7 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var string[]
      */
     public function device(){
-        return $this->belongsToMany(Device::class,'user_device');
+        return $this->belongsToMany(Device::class,'user_device')->withPivot(['date']);
     }
     protected $fillable = [
         'name',

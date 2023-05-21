@@ -12,6 +12,8 @@ class DevicePhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     private $nombreCarpetaFotos = "fotos";
     public function index()
     {
         //
@@ -82,4 +84,6 @@ class DevicePhotoController extends Controller
     {
         //
     }
+
+
 }

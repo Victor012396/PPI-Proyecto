@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\device;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DeviceController extends Controller
@@ -31,7 +32,8 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        return view('device.create');
+        $users= User::all();
+        return view('device.create',compact('users'));
     }
 
     /**
@@ -42,12 +44,16 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
+        notyf()->addSuccess('Se ha creado un nuevo dispositivo');
+
+        $users= User::all();
         $request->validate([
             'lugar'=>['required'],
             'espacio'=>['required'],
             'device'=>['required'],
         ]);
-        device::create($request->all());
+        $device=device::create($request->all());
+        $device->users()->attach($request->user_ids,['date'=>now()]);
         return redirect()->route('device.index');
     }
 
@@ -70,7 +76,8 @@ class DeviceController extends Controller
      */
     public function edit(device $device)
     {
-        return view('device.edit',compact('device'));
+        $users= User::all();
+        return view('device.edit',compact('device','users'));
     }
 
     /**
@@ -81,13 +88,16 @@ class DeviceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, device $device)
-    {
+    {   
+        $users= User::all();
         $request->validate([
             'lugar'=>['required'],
             'espacio'=>['required'],
             'device'=>['required'],
         ]);
         $device->update($request->all());
+        $device->users()->attach($request->user_ids,['date'=>now()]);
+
         return redirect()->route('device.index');
     }
 

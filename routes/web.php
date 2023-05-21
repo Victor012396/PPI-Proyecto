@@ -26,9 +26,11 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
             
-
+Route::post("articulos/fotos",[FileController::class,'agregarFotos'])->name("agregarFotosDeArticulo");
+Route::get("/photos",[FileController::class,'index'])->name("photos.index");
 Route::get('/', function () {return redirect('sign-in');})->middleware('guest');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::get('/generar-pdf', [DashboardController::class, 'generarPDF'])->middleware('auth');
@@ -84,5 +86,5 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function(){
 	Route::resource('device','App\Http\Controllers\DeviceController', ['except'=>['show']]);
 	Route::resource('producto','App\Http\Controllers\ProductoController', ['except'=>['show']]);
-	Route::resource('user','App\Http\Controllers\UserController', ['except'=>['show']]);
+	Route::resource('user','App\Http\Controllers\UserController');
 });

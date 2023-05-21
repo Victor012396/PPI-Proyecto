@@ -69,6 +69,13 @@
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
                                 </div>
+
+                                <select name="user_ids[]" class="mb-3 col-md-12" multiple>
+                                  @foreach($users as $user)
+                                  <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                  @endforeach
+
+                                </select>
                             </div>
                             <button type="submit" class="btn bg-gradient-dark">Agregar</button>
                         </form>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('lugar');
             $table->string('espacio');
             $table->string('device');
-            $table->foreignId('producto_id');
+            $table->foreignId('producto_id')->nullable();
             $table->timestamps();
 
         });
