@@ -29,10 +29,6 @@
                                             </th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                                IMAGEN
-                                            </th>
-                                            <th
-                                                class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 DISPOSITIVO</th>
                                             <th
                                                 class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -51,35 +47,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($devices as $device)
+                                    @foreach ($device as $device)
                                         <tr>
                                             <td>{{$device->id}}</td>
-
-                                            @php
-                                                $hash = is_null($device->archivo)? null : $device->archivo->hash
-                                            @endphp
-
-                                            @if (is_null($hash))
-                                                <td>
-                                                    <img style="width:15vw;" src="https://www.shutterstock.com/image-vector/no-image-available-vector-hand-260nw-745639717.jpg" alt="img no disponible" />
-                                                </td>
-                                            @else
-                                                <td>
-                                                    @php $photo = "storage/$hash"  @endphp
-                                                    <img style="width:15vw;" src={{$photo}} alt="img no disponible" />
-                                                </td>
-                                            @endif
-
                                             <td>{{$device->device}}</td>
                                             <td>{{$device->lugar}}</td>
                                             <td>{{$device->espacio}}</td>
                                             <td>
-                                                <a href="{{route('device.edit',$device->id)}}" class="btn btn-primary">Editar</a>
-                                                <form action="{{route('device.destroy',$device)}}" method="POST">
+                                                <form action="{{route('device.destroy',$device->id)}}" method="POST">
+                                                    <a href="{{route('device.edit',$device->id)}}" class="btn btn-primary">Editar</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger" type="submit">Borrar</button>
-                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -26,8 +26,7 @@
                                 <span class="text-sm">{{ Session::get('status') }}</span>
                                 <button type="button" class="btn-close text-lg py-3 opacity-10"
                                     data-bs-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                                    <span aria-hidden="true"
                             </div>
                         </div>
                         @endif
@@ -41,7 +40,8 @@
                                         </button>
                                     </div>
                                 </div>
-                        @endif
+                        @endif>&times;</span>
+                                </button>
                         <form method='POST' action="{{ route('device.update',$device) }}">
                             @csrf
                             @method('PUT')
@@ -70,14 +70,34 @@
                                     <p class='text-danger inputerror'>{{ $message }} </p>
                                     @enderror
                                 </div>
-                                <select name="user_ids[]" class="mb-3 col-md-12" multiple>
-                                  @foreach($users as $user)
-                                  <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                  @endforeach
 
-                                </select>
+                                <div class="mb-3 col-md-12">
+                                    <label class="form-label">Dueños(Pívote)</label>
+                                    <select name="user_ids[]" class="mb-3 col-md-12" multiple>
+                                    @foreach($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+
+                                    </select>
+                                 </div>
+
+                                 <div class="mb-3 col-md-12">
+                                    <label class="form-label">Productos</label>
+                                    <select name="producto_id" class="mb-3 col-md-12">
+                                    @foreach($productos as $producto)
+                                    <option value="{{ $producto->id }}">{{ $producto->nombre }}</option>
+                                    @endforeach
+
+                                    </select>
+                                 </div>
+                                
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                    <i class="mdi mdi-content-save-all"></i>
+                                        Guardar   
+                                    </button>
+                                </div>
                             </div>
-                            <button type="submit" class="btn bg-gradient-dark">Guardar</button>
                         </form>
 
                     </div>

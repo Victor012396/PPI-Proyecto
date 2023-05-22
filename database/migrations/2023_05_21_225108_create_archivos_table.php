@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('devices', function (Blueprint $table) {
+        Schema::create('archivos', function (Blueprint $table) {
             $table->id();
-            $table->string('lugar');
-            $table->string('espacio');
-            $table->string('device');
-            $table->foreignId('producto_id')->nullable();
+            $table->string('hash');
+            $table->string('nombre');
+            $table->string('extension');
+            $table->string('mime');
+            $table->foreignId('device_id')->constrained()->OnDelete('cascade');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devices');
+        Schema::dropIfExists('archivos');
     }
 };

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\device;
 use App\Models\User;
+use App\Models\Producto;
+use App\Models\Archivo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DeviceController extends Controller
 {
@@ -21,8 +24,9 @@ class DeviceController extends Controller
 
     public function index()
     {
-        $device = device::all();
-        return view('device.index',compact('device'));
+        // Eager Loading (n + 1 queries)
+        $devices = device::with(['productos'])->get();
+        return view('device.index',compact('devices'));
     }
 
     /**
@@ -33,7 +37,8 @@ class DeviceController extends Controller
     public function create()
     {
         $users= User::all();
-        return view('device.create',compact('users'));
+        $productos= Producto::all();
+        return view('device.create',compact('users','productos'));
     }
 
     /**
@@ -44,7 +49,6 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        notyf()->addSuccess('Se ha creado un nuevo dispositivo');
 
         $users= User::all();
         $request->validate([
@@ -54,6 +58,20 @@ class DeviceController extends Controller
         ]);
         $device=device::create($request->all());
         $device->users()->attach($request->user_ids,['date'=>now()]);
+        session()->flash('success', 'El registro se ha creado exitosamente');
+        $device->save();
+        if($request->hasFile('archivo') && $request->file('archivo')->isValid()){
+            $ruta = $request->archivo->store('documentos', 'public');
+
+            $archivos=new Archivo();
+            $archivos->hash = $ruta;
+            $archivos->nombre = $request->archivo->getClientOriginalName();
+            $archivos->extension = $request->archivo->guessExtension();
+            $archivos->mime = $request->archivo->getMimeType();
+            $archivos->device_id = $device->id;
+            $archivos->save();
+        }
+        
         return redirect()->route('device.index');
     }
 
@@ -65,7 +83,11 @@ class DeviceController extends Controller
      */
     public function show(device $device)
     {
-        // No se usa
+        if($response->denied()){
+            abort(403);
+        }
+
+        return view('devices/show');
     }
 
     /**
@@ -77,7 +99,8 @@ class DeviceController extends Controller
     public function edit(device $device)
     {
         $users= User::all();
-        return view('device.edit',compact('device','users'));
+        $productos= Producto::all();
+        return view('device.edit',compact('device','users','productos'));
     }
 
     /**
@@ -89,7 +112,6 @@ class DeviceController extends Controller
      */
     public function update(Request $request, device $device)
     {   
-        $users= User::all();
         $request->validate([
             'lugar'=>['required'],
             'espacio'=>['required'],
@@ -97,6 +119,18 @@ class DeviceController extends Controller
         ]);
         $device->update($request->all());
         $device->users()->attach($request->user_ids,['date'=>now()]);
+        $device->save();
+        if($request->hasFile('archivo') && $request->file('archivo')->isValid()){
+            $ruta = $request->archivo->store('documentos', 'public');
+
+            $archivos=new Archivo();
+            $archivos->hash = $ruta;
+            $archivos->nombre = $request->archivo->getClientOriginalName();
+            $archivos->extension = $request->archivo->guessExtension();
+            $archivos->mime = $request->archivo->getMimeType();
+            $archivos->device_id = $device->id;
+            $archivos->save();
+        }
 
         return redirect()->route('device.index');
     }
@@ -109,8 +143,21 @@ class DeviceController extends Controller
      */
     public function destroy(device $device)
     {
+        $archivo = Archivo::where('device_id', $device->id)->first();
+
+        if ($archivo !== null){
+            $path = $archivo->hash;
+            Storage::disk('public')->delete($path);
+        }
+        $archivo->delete();
         $device->delete();
         return redirect()->route('device.index');
 
+    }
+
+    public function descargar(Archivo $archivo)
+    {
+        return Storage::download($archivo->hash, $archivo->nombre,
+                ['Content-Type' => $archivo->mime]);
     }
 }

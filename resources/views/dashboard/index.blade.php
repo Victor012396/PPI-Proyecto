@@ -24,23 +24,6 @@
                         </div>
                     </div>
                 </div>
-                <a class="col-xl-3 col-sm-6" href="PHOTOS">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                            <div
-                                class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                                <i class="material-icons opacity-10">mail</i>
-                            </div>
-                            <div class="text-end pt-1">
-                                <h4 class="mb-0">Rnviar correo</h4>
-                            </div>
-                        </div>
-                        
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                        </div>
-                    </div>
-                </a>
                 <a class="col-xl-3 col-sm-6" href="generar-pdf">
                     <div class="card">
                         <div class="card-header p-3 pt-2">
@@ -69,46 +52,28 @@
                                 <h4 class="mb-0">Subir un archivo</h4>
                             </div>
                         </div>
-                        <form enctype="multipart/form-data" method="post" action="{{route('agregarFotosDeArticulo')}}">
+                        <form enctype="multipart/form-data" method="POST" action="{{route('archivo.store')}}">
                             @csrf
-                            <input accept="image/jpeg,image/png" multiple
-                                type="file" name="fotos[]">
-                            <button type="submit">Subir</button>
+                            <div>
+                                <label>Selecciona archivo</label>
+                                <input type="file" name="archivo" id="archivo">
+                            </div>
+                            <br>
+                            <div class="col-md-4">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                 <i class="mdi mdi-content-save-all"></i>
+                                    Guardar   
+                                </button>
+
+                            </div>
                         </form>
                         <hr class="dark horizontal my-0">
                         <div class="card-footer p-3">
-                            @if(!empty($errors->all()))
-                                <div class="notification is-danger">
-                                    <h4 class="is-size-4">Por favor, valida los siguientes errores:</h4>
-                                    <ul>
-                                        @foreach ($errors->all() as $mensaje)
-                                            <li>
-                                                {{$mensaje}}
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                                        </div>
-                                    </div>
+                        </div>
+                        
                 </div>
             </div>
             
-            <div class="row mt-4">
-             
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                            <img src="" alt="Foto">
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-
-                        </div>
-                    </div>
-                </div>
-             
-            </div>
             <div class="row mb-4">
                 <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
                     <div class="card">

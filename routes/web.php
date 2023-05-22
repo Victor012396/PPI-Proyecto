@@ -28,7 +28,10 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
-            
+Route::get('archivo/descarga/{archivo}',
+	[ArchivoController::class,'descargar'])
+	->name('archivo.store');
+Route::resource('archivo','App\Http\Controllers\ArchivoController');          
 Route::post("articulos/fotos",[FileController::class,'agregarFotos'])->name("agregarFotosDeArticulo");
 Route::get("/photos",[FileController::class,'index'])->name("photos.index");
 Route::get('/', function () {return redirect('sign-in');})->middleware('guest');
