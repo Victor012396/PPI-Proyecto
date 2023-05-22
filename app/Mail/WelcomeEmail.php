@@ -30,7 +30,9 @@ class WelcomeEmail extends Mailable
      */
     public function envelope()
     {
-
+        return new Envelope(
+            subject: 'Bienvenido al proyeco IoProyect',
+        );
     }
 
     /**

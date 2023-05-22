@@ -87,13 +87,13 @@
                                     </div>
                                 </div>
                         @endif
-                        <form method='POST' action='{{ route('user-profile') }}'>
+                        <form method='POST' action="{{ route('user-profile') }}">
                             @csrf
                             <div class="row">
                                 
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label">Email address</label>
-                                    <input type="email" name="email" class="form-control border border-2 p-2" value='{{ old('email', auth()->user()->email) }}'>
+                                    <input type="email" name="email" class="form-control border border-2 p-2" value="{{ old('email', auth()->user()->email) }}">
                                     @error('email')
                                 <p class='text-danger inputerror'>{{ $message }} </p>
                                 @enderror
@@ -133,7 +133,7 @@
                                         @enderror
                                 </div>
                             </div>
-                            <button type="submit" class="btn bg-gradient-dark">Submit</button>
+                            <!--<button type="submit" class="btn bg-gradient-dark">Submit</button>-->
                         </form>
 
                     </div>

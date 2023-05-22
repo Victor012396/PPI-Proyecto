@@ -54,10 +54,8 @@
                                             <td>{{$user->location}}</td>
                                             <td>{{$user->phone}}</td>
                                             <td>
-                                                <form action="{{route('user.destroy',$user->id)}}" method="POST">
-                                                    <a href="{{route('user.edit',$user->id)}}" class="btn btn-primary">Editar</a>
-                                                    @csrf
-                                                    
+                                                
+                                                <a href="{{route('user.edit',$user->id)}}" class="btn btn-primary">Editar</a>
                                             </td>
                                         </tr>
                                     @endforeach

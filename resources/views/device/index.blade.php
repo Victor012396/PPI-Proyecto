@@ -75,7 +75,7 @@
                                             <td>{{$device->espacio}}</td>
                                             <td>
                                                 <a href="{{route('device.edit',$device->id)}}" class="btn btn-primary">Editar</a>
-                                                <form action="{{route('device.destroy',$device)}}" method="POST">
+                                                <form id="form-delete" action="{{route('device.destroy',$device)}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger" type="submit">Borrar</button>
@@ -94,5 +94,11 @@
         </div>
     </main>
     <x-plugins></x-plugins>
+    <script>
+        const formulario = document.getElementById('form-delete');
 
+        formulario.addEventListener('submit', (e) => {
+            alert('Seguro de eliminar un registro?')
+        })
+    </script>
 </x-layout>

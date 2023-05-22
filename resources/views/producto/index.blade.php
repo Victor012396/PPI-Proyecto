@@ -43,7 +43,10 @@
                                                 class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                                 COSTO
                                             </th>
-                                            <th class="text-secondary opacity-7"></th>
+                                            <th
+                                                class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                OPCIONES
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,11 +58,13 @@
                                             <td>{{$producto->nombre}}</td>
                                             <td>{{$producto->costo}}</td>
                                             <td>
-                                                <form action="{{route('producto.destroy',$producto->id)}}" method="POST">
-                                                    <a href="{{route('producto.edit',$producto->id)}}" class="btn btn-primary">Editar</a>
+
+                                                <a href="{{route('producto.edit',$producto->id)}}" class="btn btn-primary">Editar</a>
+                                                <form action="{{route('producto.destroy',$producto->id)}}" method="POST">   
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger" type="submit">Borrar</button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

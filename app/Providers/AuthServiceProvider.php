@@ -30,6 +30,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('allow-login',function (User $user) {
+            return Auth::check();
+        }); 
     }
 }

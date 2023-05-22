@@ -147,9 +147,9 @@ class DeviceController extends Controller
 
         if ($archivo !== null){
             $path = $archivo->hash;
+            $archivo->delete();
             Storage::disk('public')->delete($path);
         }
-        $archivo->delete();
         $device->delete();
         return redirect()->route('device.index');
 
