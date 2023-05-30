@@ -3,7 +3,7 @@
 
 ## Proyecto Dashboard para IOT
 
-El presente proyecto tiene como objetivo ser integrado a un proyecto previo, y cumplir con los requisitos de la materia de **Programación para Internet D12**, con el objetivo de poder controlar un sistema IOT, se adaptará un sitio web el cuál por medio de un Dashboard, proporcionará funciones para [Proyecto-IoT-NodeMCU8266](https://github.com/Victor012396/Proyecto-IoT-NodeMCU8266).
+El presente proyecto tiene como objetivo ser integrado a un proyecto previo, con el objetivo de poder controlar un sistema IOT desde un sitio web, se adaptará por medio de un Dashboard, proporcionará funciones para [Proyecto-IoT-NodeMCU8266](https://github.com/Victor012396/Proyecto-IoT-NodeMCU8266).
 
 ## Requisitos del proyecto
 * Laravel 9.0
